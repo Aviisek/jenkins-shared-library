@@ -1,4 +1,6 @@
 def call(String herokuGitMaster) {
     checkout scm
-    sh "cd ${WORKSPACE} && git push https://git.heroku.com/${herokuGitMaster}.git"
+    dir("${env.WORKSPACE}") {
+        sh "git push https://git.heroku.com/${herokuGitMaster}.git"
+    }
 }
